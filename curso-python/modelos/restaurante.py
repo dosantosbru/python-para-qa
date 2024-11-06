@@ -1,4 +1,6 @@
 from modelos.avaliacao import Avaliacao
+from modelos.cardapio.item_cardapio import ItemCardapio
+
 
 class Restaurante:
     restaurantes = []
@@ -8,11 +10,12 @@ class Restaurante:
         self._categoria = categoria.upper()
         self._ativo = False
         self._avaliacao = []
+        self._cardapio = []
         Restaurante.restaurantes.append(self)
-    
+
     def __str__(self):
         return f'{self._nome} | {self._categoria}'
-    
+
     @classmethod
     def listar_restaurantes(cls):
         print(f'{"Nome do restaurante".ljust(25)} | {"Categoria".ljust(25)} | {"Avaliação".ljust(25)} |{"Status"}')
@@ -22,12 +25,12 @@ class Restaurante:
     @property
     def ativo(self):
         return '⌧' if self._ativo else '☐'
-    
+
     def alternar_estado(self):
         self._ativo = not self._ativo
 
     def receber_avaliacao(self, cliente, nota):
-        if 0 < nota <= 5: 
+        if 0 < nota <= 5:
             avaliacao = Avaliacao(cliente, nota)
             self._avaliacao.append(avaliacao)
 
@@ -39,3 +42,11 @@ class Restaurante:
         quantidade_de_notas = len(self._avaliacao)
         media = round(soma_das_notas / quantidade_de_notas, 1)
         return media
+
+    def adicionar_item_cardapio(self, item):
+        if isinstance(item, ItemCardapio):
+            self._cardapio.append(item)
+
+    def remover_item_cardapio(self, item):
+        if item in self._cardapio:
+            self._cardapio.remove(item)
