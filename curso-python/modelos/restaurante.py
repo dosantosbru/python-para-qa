@@ -50,3 +50,14 @@ class Restaurante:
     def remover_item_cardapio(self, item):
         if item in self._cardapio:
             self._cardapio.remove(item)
+
+    @property
+    def exibir_cardapio(self):
+        print(f'Cardapio do restaurante {self._nome}\n')
+        for i, item in enumerate(self._cardapio, start=1):
+            # if hasattr(item, '_descricao'):
+            mensagem = f'{i}. Nome: {item._nome} | Preço: R${item._preco}'
+            print(mensagem)
+            # else:
+            #     mensagem_bebida = f'{i}. Nome: {item._nome} | Preço: R${item._preco} | Tamanho: {item.tamanho}'
+            #     print(mensagem_bebida)
