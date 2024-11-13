@@ -55,9 +55,10 @@ class Restaurante:
     def exibir_cardapio(self):
         print(f'Cardapio do restaurante {self._nome}\n')
         for i, item in enumerate(self._cardapio, start=1):
-            # if hasattr(item, '_descricao'):
-            mensagem = f'{i}. Nome: {item._nome} | Preço: R${item._preco}'
-            print(mensagem)
-            # else:
-            #     mensagem_bebida = f'{i}. Nome: {item._nome} | Preço: R${item._preco} | Tamanho: {item.tamanho}'
-            #     print(mensagem_bebida)
+            if hasattr(item, 'descricao'):
+                mensagem_prato = f'{i}. Nome: {item._nome:<12} | Preço: R${item._preco} | Descricao: {item.descricao}'
+                print(mensagem_prato)
+            
+            else:
+                    mensagem_bebida = f'{i}. Nome: {item._nome} | Preço: R${item._preco} | Tamanho: {item.tamanho}'
+                    print(mensagem_bebida)
