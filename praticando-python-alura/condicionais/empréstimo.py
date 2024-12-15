@@ -30,3 +30,4 @@ if renda > 2000 and parcelas <= 0.3 * renda:
 else:
     print(
         f"Empréstimo negado. Renda de {locale.currency(renda)} com parcela de {locale.currency(parcelas)} ultrapassa 30% da renda.")
+a
